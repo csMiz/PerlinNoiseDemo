@@ -60,7 +60,8 @@ Public Class Form1
             Next
         Next
 
-
+        DrawImage(New Vector2(0, 0))
+        bitmap.Save(Application.StartupPath & "\dump.png")
 
 
     End Sub
