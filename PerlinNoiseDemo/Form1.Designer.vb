@@ -26,6 +26,7 @@ Partial Class Form1
         PictureBox1 = New PictureBox()
         Timer1 = New Timer(components)
         Button1 = New Button()
+        Button2 = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -51,11 +52,21 @@ Partial Class Form1
         Button1.Text = "Button1"
         Button1.UseVisualStyleBackColor = True
         ' 
+        ' Button2
+        ' 
+        Button2.Location = New Point(518, 128)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(206, 110)
+        Button2.TabIndex = 2
+        Button2.Text = "Button2"
+        Button2.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(9F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(736, 525)
+        Controls.Add(Button2)
         Controls.Add(Button1)
         Controls.Add(PictureBox1)
         Name = "Form1"
@@ -67,5 +78,6 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 
 End Class

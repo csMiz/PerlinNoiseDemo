@@ -16,6 +16,8 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        ' see https://mrl.cs.nyu.edu/~perlin/noise/
+
         For x = 0 To 9
             For y = 0 To 9
                 Dim theta As Single = ran.NextDouble * 2.0 * Math.PI
@@ -98,7 +100,30 @@ Public Class Form1
         UV_Shift += New Vector2(2.618, 1.0)
     End Sub
 
-    ' see https://mrl.cs.nyu.edu/~perlin/noise/
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        ' merge 3 noise together
+        Dim noise_r As Bitmap = New Bitmap(Application.StartupPath & "\noise0.png")
+        Dim noise_g As Bitmap = New Bitmap(Application.StartupPath & "\noise1.png")
+        Dim noise_b As Bitmap = New Bitmap(Application.StartupPath & "\noise2.png")
+        Dim img_size As Size = noise_r.Size
+        Dim noise_rgb As New Bitmap(img_size.Width, img_size.Height)
+        For j = 0 To img_size.Height - 1
+            For i = 0 To img_size.Width - 1
+                Dim c As System.Drawing.Color = System.Drawing.Color.FromArgb(noise_r.GetPixel(i, j).R,
+                                                                              noise_g.GetPixel(i, j).R,
+                                                                              noise_b.GetPixel(i, j).R)
+                noise_rgb.SetPixel(i, j, c)
+            Next
+        Next
+        noise_rgb.Save(Application.StartupPath & "\dump_rgb.png")
+
+        noise_r.Dispose()
+        noise_g.Dispose()
+        noise_b.Dispose()
+        noise_rgb.Dispose()
+    End Sub
+
+
 
 
 
